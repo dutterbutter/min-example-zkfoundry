@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.20;
 
-import "forge-std/src/console.sol";
-import "forge-std/src/Test.sol";
+import "forge-std/console.sol";
+import "forge-std/Test.sol";
 
 contract Counter {
     uint256 public number;
