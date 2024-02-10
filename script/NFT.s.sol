@@ -6,10 +6,10 @@ import "../src/NFT.sol";
 
 contract MyScript is Script {
     function run() external {
-        uint256 privateKey = uint256(bytes32(bytes20(keccak256(abi.encodePacked("PRIVATE-KEY")))));
-        vm.startBroadcast(privateKey);
+        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+        vm.startBroadcast(deployerPrivateKey);
 
-        NFT nft = new NFT("NFT_tutorial", "TUT", "baseUri");
+        NFT nft = new NFT("ZK_QUEST", "ZKQ", "baseUri");
         
         vm.stopBroadcast();
     }

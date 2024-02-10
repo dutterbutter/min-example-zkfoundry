@@ -17,6 +17,7 @@ contract NFT is ERC721, Ownable {
     uint256 public currentTokenId;
     uint256 public constant TOTAL_SUPPLY = 10_000;
     uint256 public constant MINT_PRICE = 0.08 ether;
+    address public immutable deployer;
 
     constructor(
         string memory _name,
@@ -24,8 +25,8 @@ contract NFT is ERC721, Ownable {
         string memory _baseURI
     ) ERC721(_name, _symbol) Ownable(msg.sender) {
         baseURI = _baseURI;
+        deployer = msg.sender;
     }
-
 
     function mintTo(address recipient) public payable returns (uint256) {
         if (msg.value != MINT_PRICE) {
@@ -61,5 +62,9 @@ contract NFT is ERC721, Ownable {
         if (!transferTx) {
             revert WithdrawTransfer();
         }
+    }
+
+    function getContractDeployer() public view returns (address) {
+        return deployer;
     }
 }
